@@ -1,0 +1,97 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Movie {
+  id          String   @id @default(cuid())
+  tmdbId      Int?     @unique
+  title       String
+  year        Int
+  director    String
+  posterUrl   String?
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  analyses     Analysis[]
+  pathwayItems PathwayItem[]
+}
+
+model PhilosophyConcept {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  slug        String   @unique
+  description String
+  createdAt   DateTime @default(now())
+
+  analysisConcepts AnalysisConcept[]
+}
+
+model Analysis {
+  id         String @id @default(cuid())
+  movieId    String
+  authorName String
+  title      String
+  body       String
+  upvotes    Int    @default(0)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  movie    Movie             @relation(fields: [movieId], references: [id], onDelete: Cascade)
+  concepts AnalysisConcept[]
+  votes    Vote[]
+}
+
+model AnalysisConcept {
+  id         String  @id @default(cuid())
+  analysisId String
+  conceptId  String
+  relevance  String? // "primary" | "secondary"
+
+  analysis Analysis          @relation(fields: [analysisId], references: [id], onDelete: Cascade)
+  concept  PhilosophyConcept @relation(fields: [conceptId], references: [id], onDelete: Cascade)
+
+  @@unique([analysisId, conceptId])
+}
+
+model Vote {
+  id         String   @id @default(cuid())
+  analysisId String
+  voterName  String
+  value      Int
+  createdAt  DateTime @default(now())
+
+  analysis Analysis @relation(fields: [analysisId], references: [id], onDelete: Cascade)
+
+  @@unique([analysisId, voterName])
+}
+
+model Pathway {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  authorName  String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  items PathwayItem[]
+}
+
+model PathwayItem {
+  id        String  @id @default(cuid())
+  pathwayId String
+  movieId   String
+  sortOrder Int
+  note      String?
+
+  pathway Pathway @relation(fields: [pathwayId], references: [id], onDelete: Cascade)
+  movie   Movie   @relation(fields: [movieId], references: [id], onDelete: Cascade)
+
+  @@unique([pathwayId, movieId])
+}
