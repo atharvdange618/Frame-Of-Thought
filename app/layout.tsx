@@ -84,7 +84,7 @@ export default function RootLayout({
               <p className="text-sm font-semibold uppercase tracking-widest text-stone-500">
                 Frame of Thought
               </p>
-              <p className="text-xs italic text-stone-700">
+              <p className="text-sm italic text-stone-500">
                 &ldquo;The impediment to action advances action. What stands in
                 the way becomes the way.&rdquo; — Marcus Aurelius
               </p>
