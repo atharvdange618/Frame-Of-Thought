@@ -1,8 +1,15 @@
 import { PathwayCard } from "@/components/PathwayCard";
 import { prisma } from "@/lib/prisma";
 import Link from "next/link";
+import type { Metadata } from "next";
 
 export const revalidate = 120;
+
+export const metadata: Metadata = {
+  title: "Pathways - Frame of Thought",
+  description:
+    "Curated journeys through films that explore a philosophical idea.",
+};
 
 export default async function PathwaysPage() {
   const pathways = await prisma.pathway.findMany({

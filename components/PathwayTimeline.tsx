@@ -18,7 +18,7 @@ interface Props {
 }
 
 export function PathwayTimeline({ items }: Props) {
-  const sorted = [...items].sort((a, b) => a.sortOrder - b.sortOrder);
+  const sorted = items.toSorted((a, b) => a.sortOrder - b.sortOrder);
 
   return (
     <ol className="relative flex flex-col gap-0">

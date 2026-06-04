@@ -101,6 +101,7 @@ function SortableItem({
         value={item.note}
         onChange={(e) => onNoteChange(item.clientId, e.target.value)}
         placeholder="Why this film belongs in the pathway…"
+        aria-label={`Note for ${item.title}`}
         className="w-full rounded-sm border border-stone-300 dark:border-stone-700 bg-stone-50 dark:bg-stone-900/60 px-3 py-2 text-sm text-stone-900 dark:text-stone-200 placeholder:text-stone-400 dark:placeholder:text-stone-600 focus:border-amber-600/60 dark:focus:border-amber-700/60 focus:outline-none"
       />
     </li>

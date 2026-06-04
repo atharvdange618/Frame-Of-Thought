@@ -140,9 +140,9 @@ export function AnalysisForm({ movies, concepts, preselectedMovieId }: Props) {
       </div>
 
       <div className="flex flex-col gap-3">
-        <label className="text-sm font-semibold uppercase tracking-wider text-stone-600 dark:text-stone-400">
+        <span className="text-sm font-semibold uppercase tracking-wider text-stone-600 dark:text-stone-400">
           Philosophical Concepts (select at least one)
-        </label>
+        </span>
         <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
           {concepts.map((concept) => (
             <label

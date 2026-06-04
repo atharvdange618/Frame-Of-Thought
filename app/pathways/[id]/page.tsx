@@ -2,8 +2,26 @@ import { PathwayTimeline } from "@/components/PathwayTimeline";
 import { prisma } from "@/lib/prisma";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 
 export const dynamic = "force-dynamic";
+
+export async function generateMetadata({
+  params,
+}: Props): Promise<Metadata> {
+  const { id } = await params;
+  const pathway = await prisma.pathway.findUnique({
+    where: { id },
+    select: { title: true, description: true, authorName: true },
+  });
+
+  if (!pathway) return { title: "Pathway Not Found" };
+
+  return {
+    title: `${pathway.title} - Frame of Thought`,
+    description: pathway.description,
+  };
+}
 
 interface Props {
   params: Promise<{ id: string }>;

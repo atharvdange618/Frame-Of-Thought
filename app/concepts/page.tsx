@@ -1,7 +1,14 @@
 import { prisma } from "@/lib/prisma";
 import Link from "next/link";
+import type { Metadata } from "next";
 
 export const dynamic = "force-static";
+
+export const metadata: Metadata = {
+  title: "Philosophical Concepts - Frame of Thought",
+  description:
+    "Every film on Frame of Thought is tagged with one or more philosophical ideas. Choose a concept to explore the films and analyses connected to it.",
+};
 
 export default async function ConceptsPage() {
   const concepts = await prisma.philosophyConcept.findMany({

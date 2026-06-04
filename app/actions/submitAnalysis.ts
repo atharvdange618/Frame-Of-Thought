@@ -1,5 +1,6 @@
 "use server";
 
+import { validateSession } from "@/lib/rateLimit";
 import { prisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
@@ -23,6 +24,15 @@ export async function submitAnalysis(
   _prevState: SubmitAnalysisState,
   formData: FormData,
 ): Promise<SubmitAnalysisState> {
+  try {
+    await validateSession();
+  } catch (err: any) {
+    return {
+      success: false,
+      error: err.message || "Rate limit exceeded. Please try again later.",
+    };
+  }
+
   const raw = {
     movieId: formData.get("movieId") as string,
     authorName: formData.get("authorName") as string,

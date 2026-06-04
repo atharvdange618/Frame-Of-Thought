@@ -1,16 +1,22 @@
 import { AnalysisForm } from "@/components/AnalysisForm";
 import { prisma } from "@/lib/prisma";
+import type { Metadata } from "next";
 
 export const dynamic = "force-dynamic";
+
+export const metadata: Metadata = {
+  title: "Submit an Analysis - Frame of Thought",
+  description:
+    "Connect a film to philosophical concepts. Share your thoughts and contribute to the archive.",
+};
 
 interface Props {
   searchParams: Promise<{ movieId?: string }>;
 }
 
 export default async function SubmitPage({ searchParams }: Props) {
-  const { movieId } = await searchParams;
-
-  const [movies, concepts] = await Promise.all([
+  const [resolvedSearchParams, movies, concepts] = await Promise.all([
+    searchParams,
     prisma.movie.findMany({
       orderBy: { title: "asc" },
       select: { id: true, title: true, year: true },
@@ -20,6 +26,8 @@ export default async function SubmitPage({ searchParams }: Props) {
       select: { id: true, name: true },
     }),
   ]);
+
+  const { movieId } = resolvedSearchParams;
 
   return (
     <div className="min-h-screen transition-colors duration-200">

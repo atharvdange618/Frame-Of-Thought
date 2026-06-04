@@ -3,8 +3,26 @@ import { prisma } from "@/lib/prisma";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Image from "next/image";
+import type { Metadata } from "next";
 
 export const dynamic = "force-dynamic";
+
+export async function generateMetadata({
+  params,
+}: Props): Promise<Metadata> {
+  const { id } = await params;
+  const movie = await prisma.movie.findUnique({
+    where: { id },
+    select: { title: true, year: true, director: true },
+  });
+
+  if (!movie) return { title: "Film Not Found" };
+
+  return {
+    title: `${movie.title} (${movie.year}) - Frame of Thought`,
+    description: `${movie.title}, directed by ${movie.director}. Philosophical cinema archive."`,
+  };
+}
 
 interface Props {
   params: Promise<{ id: string }>;

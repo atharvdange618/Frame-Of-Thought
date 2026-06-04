@@ -7,7 +7,7 @@ const createSchema = z.object({
   year: z.number().int(),
   director: z.string().min(1),
   tmdbId: z.number().int().optional(),
-  posterUrl: z.string().url().optional().nullable(),
+  posterUrl: z.url().optional().nullable(),
   description: z.string().optional().nullable(),
 });
 

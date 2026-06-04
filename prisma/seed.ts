@@ -133,11 +133,15 @@ async function main() {
   console.log("🎬 Seeding Deep Screen database...");
 
   console.log("Cleaning up existing analyses, votes, and pathways...");
-  await prisma.vote.deleteMany();
-  await prisma.pathwayItem.deleteMany();
-  await prisma.pathway.deleteMany();
-  await prisma.analysisConcept.deleteMany();
-  await prisma.analysis.deleteMany();
+  await Promise.all([
+    prisma.vote.deleteMany(),
+    prisma.pathwayItem.deleteMany(),
+    prisma.analysisConcept.deleteMany(),
+  ]);
+  await Promise.all([
+    prisma.pathway.deleteMany(),
+    prisma.analysis.deleteMany(),
+  ]);
 
   // Seed movies from TMDB
   console.log(`Fetching ${TMDB_IDS.length} movies from TMDB...`);
@@ -153,13 +157,15 @@ async function main() {
 
   // Seed concepts
   console.log(`Seeding ${CONCEPTS.length} philosophy concepts...`);
-  for (const concept of CONCEPTS) {
-    await prisma.philosophyConcept.upsert({
-      where: { slug: concept.slug },
-      update: {},
-      create: concept,
-    });
-  }
+  await Promise.all(
+    CONCEPTS.map((concept) =>
+      prisma.philosophyConcept.upsert({
+        where: { slug: concept.slug },
+        update: {},
+        create: concept,
+      })
+    )
+  );
   console.log(`Concepts: ${CONCEPTS.length} seeded`);
 
   // Helpers to fetch DB IDs safely
@@ -256,28 +262,32 @@ async function main() {
     },
   ];
 
-  for (const analysisData of ANALYSES) {
-    const movieId = await getMovieId(analysisData.tmdbId);
-    const analysis = await prisma.analysis.create({
-      data: {
-        movieId,
-        authorName: analysisData.authorName,
-        title: analysisData.title,
-        body: analysisData.body,
-        upvotes: analysisData.upvotes,
-      },
-    });
-
-    for (const slug of analysisData.conceptSlugs) {
-      const conceptId = await getConceptId(slug);
-      await prisma.analysisConcept.create({
+  await Promise.all(
+    ANALYSES.map(async (analysisData) => {
+      const movieId = await getMovieId(analysisData.tmdbId);
+      const analysis = await prisma.analysis.create({
         data: {
-          analysisId: analysis.id,
-          conceptId,
+          movieId,
+          authorName: analysisData.authorName,
+          title: analysisData.title,
+          body: analysisData.body,
+          upvotes: analysisData.upvotes,
         },
       });
-    }
-  }
+
+      await Promise.all(
+        analysisData.conceptSlugs.map(async (slug) => {
+          const conceptId = await getConceptId(slug);
+          await prisma.analysisConcept.create({
+            data: {
+              analysisId: analysis.id,
+              conceptId,
+            },
+          });
+        })
+      );
+    })
+  );
   console.log(`Analyses: ${ANALYSES.length} seeded`);
 
   // Seed pathways
@@ -349,27 +359,31 @@ async function main() {
     },
   ];
 
-  for (const pathwayData of PATHWAYS) {
-    const pathway = await prisma.pathway.create({
-      data: {
-        title: pathwayData.title,
-        description: pathwayData.description,
-        authorName: pathwayData.authorName,
-      },
-    });
-
-    for (const item of pathwayData.items) {
-      const movieId = await getMovieId(item.tmdbId);
-      await prisma.pathwayItem.create({
+  await Promise.all(
+    PATHWAYS.map(async (pathwayData) => {
+      const pathway = await prisma.pathway.create({
         data: {
-          pathwayId: pathway.id,
-          movieId,
-          sortOrder: item.sortOrder,
-          note: item.note,
+          title: pathwayData.title,
+          description: pathwayData.description,
+          authorName: pathwayData.authorName,
         },
       });
-    }
-  }
+
+      await Promise.all(
+        pathwayData.items.map(async (item) => {
+          const movieId = await getMovieId(item.tmdbId);
+          await prisma.pathwayItem.create({
+            data: {
+              pathwayId: pathway.id,
+              movieId,
+              sortOrder: item.sortOrder,
+              note: item.note,
+            },
+          });
+        })
+      );
+    })
+  );
   console.log(`Pathways: ${PATHWAYS.length} seeded`);
 
   console.log("✅ Seed complete!");

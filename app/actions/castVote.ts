@@ -1,5 +1,6 @@
 "use server";
 
+import { validateSession } from "@/lib/rateLimit";
 import { prisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
@@ -22,6 +23,15 @@ export async function castVote(
   _prevState: CastVoteState,
   formData: FormData,
 ): Promise<CastVoteState> {
+  try {
+    await validateSession();
+  } catch (err: any) {
+    return {
+      success: false,
+      error: err.message || "Rate limit exceeded. Please try again later.",
+    };
+  }
+
   const raw = {
     analysisId: formData.get("analysisId") as string,
     voterName: formData.get("voterName") as string,

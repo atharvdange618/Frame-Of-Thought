@@ -1,5 +1,6 @@
 "use server";
 
+import { validateSession } from "@/lib/rateLimit";
 import { prisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
@@ -28,7 +29,17 @@ export async function createPathway(
   _prevState: CreatePathwayState,
   formData: FormData,
 ): Promise<CreatePathwayState> {
+  try {
+    await validateSession();
+  } catch (err: any) {
+    return {
+      success: false,
+      error: err.message || "Rate limit exceeded. Please try again later.",
+    };
+  }
+
   let items: z.infer<typeof itemSchema>[] = [];
+
 
   try {
     const rawItems = formData.get("items") as string;

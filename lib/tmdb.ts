@@ -23,7 +23,7 @@ export interface TmdbSearchResult {
   overview: string;
 }
 
-export async function fetchTmdb<T>(endpoint: string): Promise<T> {
+async function fetchTmdb<T>(endpoint: string): Promise<T> {
   const url = `${TMDB_BASE_URL}${endpoint}`;
   const res = await fetch(url, {
     headers: {
@@ -38,7 +38,7 @@ export async function fetchTmdb<T>(endpoint: string): Promise<T> {
   return res.json();
 }
 
-export async function searchMovies(query: string): Promise<TmdbSearchResult[]> {
+async function searchMovies(query: string): Promise<TmdbSearchResult[]> {
   const data = await fetchTmdb<{ results: TmdbSearchResult[] }>(
     `/search/movie?query=${encodeURIComponent(query)}&language=en-US&page=1`,
   );
@@ -46,11 +46,12 @@ export async function searchMovies(query: string): Promise<TmdbSearchResult[]> {
 }
 
 export async function getMovie(tmdbId: number): Promise<TmdbMovie> {
-  const data = await fetchTmdb<TmdbMovie>(`/movie/${tmdbId}?language=en-US`);
-
-  const credits = await fetchTmdb<{
-    crew: { job: string; name: string }[];
-  }>(`/movie/${tmdbId}/credits?language=en-US`);
+  const [data, credits] = await Promise.all([
+    fetchTmdb<TmdbMovie>(`/movie/${tmdbId}?language=en-US`),
+    fetchTmdb<{
+      crew: { job: string; name: string }[];
+    }>(`/movie/${tmdbId}/credits?language=en-US`),
+  ]);
 
   const director = credits.crew.find((c) => c.job === "Director")?.name;
 

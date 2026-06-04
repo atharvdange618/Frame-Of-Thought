@@ -12,14 +12,11 @@ const initialState: CastVoteState = { success: false };
 
 export function VoteButtons({ analysisId, initialUpvotes }: Props) {
   const [state, formAction, pending] = useActionState(castVote, initialState);
-  const [upvotes, setUpvotes] = useState(initialUpvotes);
   const [voterName, setVoterName] = useState("");
 
-  useEffect(() => {
-    if (state.success && state.newUpvoteCount !== undefined) {
-      setUpvotes(state.newUpvoteCount);
-    }
-  }, [state]);
+  const upvotes = (state.success && state.newUpvoteCount !== undefined)
+    ? state.newUpvoteCount
+    : initialUpvotes;
 
   return (
     <div className="flex shrink-0 flex-col items-end gap-2">

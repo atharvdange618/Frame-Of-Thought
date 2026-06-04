@@ -1,6 +1,13 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 
 export const dynamic = "force-static";
+
+export const metadata: Metadata = {
+  title: "About - Frame of Thought",
+  description:
+    "Learn about Frame of Thought, a philosophical cinema archive where film lovers map movies to philosophical concepts.",
+};
 
 export default function AboutPage() {
   return (

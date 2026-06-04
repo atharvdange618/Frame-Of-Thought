@@ -1,6 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import type { Metadata } from "next";
 
 export const revalidate = 120;
 
@@ -13,6 +14,22 @@ export async function generateStaticParams() {
   return concepts.map((c) => ({
     slug: c.slug,
   }));
+}
+
+export async function generateMetadata({
+  params,
+}: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const concept = await prisma.philosophyConcept.findUnique({
+    where: { slug },
+  });
+
+  if (!concept) return { title: "Concept Not Found" };
+
+  return {
+    title: `${concept.name} - Frame of Thought`,
+    description: concept.description,
+  };
 }
 
 interface Props {

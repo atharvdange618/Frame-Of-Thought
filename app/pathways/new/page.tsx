@@ -1,7 +1,14 @@
 import { PathwayForm } from "@/components/PathwayForm";
 import { prisma } from "@/lib/prisma";
+import type { Metadata } from "next";
 
 export const dynamic = "force-dynamic";
+
+export const metadata: Metadata = {
+  title: "Create a Pathway - Frame of Thought",
+  description:
+    "Curate an ordered sequence of films that explore a philosophical idea.",
+};
 
 export default async function NewPathwayPage() {
   const movies = await prisma.movie.findMany({

@@ -1,8 +1,15 @@
 import { prisma } from "@/lib/prisma";
 import Link from "next/link";
 import Image from "next/image";
+import type { Metadata } from "next";
 
 export const revalidate = 300;
+
+export const metadata: Metadata = {
+  title: "Films - Frame of Thought",
+  description:
+    "Browse the philosophical cinema archive. Every film is mapped to philosophical concepts.",
+};
 
 export default async function MoviesPage() {
   const movies = await prisma.movie.findMany({

@@ -3,8 +3,26 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { VoteButtons } from "@/components/VoteButtons";
+import type { Metadata } from "next";
 
 export const dynamic = "force-dynamic";
+
+export async function generateMetadata({
+  params,
+}: Props): Promise<Metadata> {
+  const { id } = await params;
+  const analysis = await prisma.analysis.findUnique({
+    where: { id },
+    include: { movie: true },
+  });
+
+  if (!analysis) return { title: "Analysis Not Found" };
+
+  return {
+    title: `${analysis.title} - Frame of Thought`,
+    description: `An analysis of ${analysis.movie.title} by ${analysis.authorName}`,
+  };
+}
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -72,7 +90,7 @@ export default async function AnalysisDetailPage({ params }: Props) {
             <div className="prose prose-stone dark:prose-invert max-w-none">
               {analysis.body.split("\n\n").map((paragraph, index) => (
                 <p
-                  key={index}
+                  key={`${paragraph.slice(0, 32)}-${paragraph.length}`}
                   className="mb-6 text-base leading-relaxed text-stone-700 dark:text-stone-300"
                 >
                   {paragraph}

@@ -122,9 +122,9 @@ export function PathwayForm({ movies }: Props) {
       </div>
 
       <div className="flex flex-col gap-3">
-        <label className="text-sm font-semibold uppercase tracking-wider text-stone-600 dark:text-stone-400">
+        <span className="text-sm font-semibold uppercase tracking-wider text-stone-600 dark:text-stone-400">
           Films in order
-        </label>
+        </span>
         <PathwayBuilder
           items={items}
           onReorder={setItems}

@@ -2,8 +2,15 @@ import { AnalysisCard } from "@/components/AnalysisCard";
 import { PathwayCard } from "@/components/PathwayCard";
 import { prisma } from "@/lib/prisma";
 import Link from "next/link";
+import type { Metadata } from "next";
 
 export const revalidate = 60;
+
+export const metadata: Metadata = {
+  title: "Frame of Thought - Philosophical Cinema Archive",
+  description:
+    "Explore films mapped to philosophical concepts. Submit analyses, vote on ideas, and build curated pathways through cinema.",
+};
 
 export default async function Home() {
   const [trendingAnalyses, featuredPathways] = await Promise.all([
