@@ -11,23 +11,35 @@ export default async function ConceptsPage() {
   });
 
   return (
-    <div>
-      <h1>Philosophical Concepts</h1>
-      <p>
-        Every film on Frame of Thought is tagged with one or more philosophical
-        ideas. Choose a concept to explore the films and analyses connected to
-        it.
-      </p>
+    <div className="min-h-screen bg-[#1a1612] text-stone-200">
+      <div className="mx-auto max-w-5xl px-6 py-16">
+        <div className="mb-12">
+          <h1 className="text-4xl font-bold tracking-tight text-stone-100">
+            Philosophical Concepts
+          </h1>
+          <p className="mt-3 max-w-xl text-stone-500">
+            Every film on Frame of Thought is tagged with one or more
+            philosophical ideas. Choose a concept to explore the films and
+            analyses connected to it.
+          </p>
+        </div>
 
-      <div>
-        {concepts.map((concept) => (
-          <Link key={concept.id} href={`/concepts/${concept.slug}`}>
-            <div>
-              <h2>{concept.name}</h2>
-              <p>{concept.description}</p>
-            </div>
-          </Link>
-        ))}
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {concepts.map((concept) => (
+            <Link
+              key={concept.id}
+              href={`/concepts/${concept.slug}`}
+              className="group rounded-sm border border-stone-800 bg-stone-900/40 p-6 transition-all duration-200 hover:border-amber-700/40 hover:bg-stone-900/70"
+            >
+              <h2 className="mb-2 font-semibold text-stone-200 transition-colors group-hover:text-amber-400">
+                {concept.name}
+              </h2>
+              <p className="line-clamp-3 text-sm leading-relaxed text-stone-600">
+                {concept.description}
+              </p>
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
   );
