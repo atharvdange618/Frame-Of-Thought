@@ -143,6 +143,27 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ---
 
+## Deployment
+
+The project is configured for **Vercel** via `vercel.json`:
+
+```bash
+# Deploy to Vercel
+vercel --prod
+```
+
+Required environment variables in Vercel dashboard:
+
+| Variable                | Description             |
+| ----------------------- | ----------------------- |
+| `DATABASE_URL`          | PostgreSQL connection   |
+| `TMDB_API_KEY`          | TMDB API bearer token   |
+| `NEXT_PUBLIC_SITE_URL`  | Production URL          |
+
+The build command (`pnpm prisma generate && pnpm build`) generates the Prisma client before building.
+
+---
+
 ## Database Setup
 
 Requires a PostgreSQL instance. With a local Postgres running:
@@ -166,6 +187,7 @@ app/
 ├── not-found.tsx                 # Custom 404
 ├── about/page.tsx                # /about - SSG
 ├── movies/
+│   ├── layout.tsx                # Nested layout - breadcrumb + actions
 │   ├── loading.tsx
 │   ├── page.tsx                  # /movies - ISR 300s
 │   └── [id]/
@@ -225,6 +247,7 @@ prisma/
 ## Concepts Covered
 
 - **File-based routing** - all 14 pages in `app/` directory using folder conventions
+- **Nested layouts** - `app/movies/layout.tsx` provides shared breadcrumb and actions for `/movies/*`
 - **Layouts** - root layout wraps all pages with sticky navbar and footer
 - **SSR** - `/movies/[id]`, `/pathways/[id]`, `/submit`, `/pathways/new`
 - **SSG** - `/concepts`, `/about` with `generateStaticParams` / `force-static`
