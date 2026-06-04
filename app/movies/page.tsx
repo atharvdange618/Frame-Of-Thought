@@ -38,7 +38,7 @@ export default async function MoviesPage() {
               href={`/movies/${movie.id}`}
               className="group flex flex-col gap-3"
             >
-              <div className="relative aspect-[2/3] overflow-hidden rounded-sm bg-stone-200 dark:bg-stone-900 ring-1 ring-stone-300 dark:ring-stone-800 transition-all duration-200 group-hover:ring-amber-700/50 group-hover:shadow-lg group-hover:shadow-black/40">
+              <div className="relative aspect-2/3 overflow-hidden rounded-sm bg-stone-200 dark:bg-stone-900 ring-1 ring-stone-300 dark:ring-stone-800 transition-all duration-200 group-hover:ring-amber-700/50 group-hover:shadow-lg group-hover:shadow-black/40">
                 {movie.posterUrl ? (
                   <Image
                     src={movie.posterUrl}

@@ -26,7 +26,7 @@ export default function PathwayDetailLoading() {
               </div>
               <div className="flex gap-4 flex-1">
                 <div className="w-12 shrink-0">
-                  <div className="aspect-[2/3] rounded-sm bg-stone-100 dark:bg-stone-900" />
+                  <div className="aspect-2/3 rounded-sm bg-stone-100 dark:bg-stone-900" />
                 </div>
                 <div className="flex flex-col gap-2 flex-1">
                   <div className="h-4 w-1/2 rounded bg-stone-200 dark:bg-stone-800" />

@@ -1,6 +1,6 @@
 # Frame of Thought
 
-A philosophical cinema archive built with Next.js 16 (App Router). Film lovers and developers link movies to philosophical concepts, submit analyses, vote on ideas, and build curated pathways - ordered journeys through films that explore a single idea from different angles.
+A philosophical cinema archive built for Film lovers and developers link movies to philosophical concepts, submit analyses, vote on ideas, and build curated pathways - ordered journeys through films that explore a single idea from different angles.
 
 ---
 

@@ -26,7 +26,7 @@ export function PathwayTimeline({ items }: Props) {
         <li key={item.movie.id} className="relative flex gap-6 pb-10 last:pb-0">
           {index < sorted.length - 1 && (
             <span
-              className="absolute left-[1.125rem] top-10 bottom-0 w-px bg-stone-300 dark:bg-stone-800"
+              className="absolute left-4.5 top-10 bottom-0 w-px bg-stone-300 dark:bg-stone-800"
               aria-hidden
             />
           )}

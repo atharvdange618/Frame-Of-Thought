@@ -6,7 +6,7 @@ export default function MovieDetailLoading() {
 
         <div className="flex flex-col gap-8 sm:flex-row sm:items-start">
           <div className="w-full shrink-0 sm:w-48 md:w-56">
-            <div className="aspect-[2/3] rounded-sm bg-stone-100 dark:bg-stone-900" />
+            <div className="aspect-2/3 rounded-sm bg-stone-100 dark:bg-stone-900" />
           </div>
 
           <div className="flex flex-col gap-4 flex-1">

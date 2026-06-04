@@ -49,7 +49,7 @@ export default async function MovieDetailPage({ params }: Props) {
 
         <div className="flex flex-col gap-8 sm:flex-row sm:items-start">
           <div className="w-full shrink-0 sm:w-48 md:w-56">
-            <div className="relative aspect-[2/3] overflow-hidden rounded-sm bg-stone-200 dark:bg-stone-900 ring-1 ring-stone-300 dark:ring-stone-800">
+            <div className="relative aspect-2/3 overflow-hidden rounded-sm bg-stone-200 dark:bg-stone-900 ring-1 ring-stone-300 dark:ring-stone-800">
               {movie.posterUrl ? (
                 <Image
                   src={movie.posterUrl}
