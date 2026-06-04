@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -29,63 +31,66 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#1a1612] text-stone-200`}
       >
-        <header className="sticky top-0 z-50 border-b border-stone-800 bg-[#1a1612]/90 backdrop-blur-sm">
-          <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-            <Link
-              href="/"
-              className="text-base font-semibold tracking-widest uppercase text-stone-300 transition-colors hover:text-stone-100"
-            >
-              Frame of Thought
-            </Link>
+        <ThemeProvider>
+          <header className="sticky top-0 z-50 border-b border-stone-800 bg-[#1a1612]/90 backdrop-blur-sm">
+            <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+              <Link
+                href="/"
+                className="text-base font-semibold tracking-widest uppercase text-stone-300 transition-colors hover:text-stone-100"
+              >
+                Frame of Thought
+              </Link>
 
-            <nav className="flex items-center gap-6 text-sm text-stone-500">
-              <Link
-                href="/movies"
-                className="transition-colors hover:text-stone-200"
-              >
-                Films
-              </Link>
-              <Link
-                href="/concepts"
-                className="transition-colors hover:text-stone-200"
-              >
-                Concepts
-              </Link>
-              <Link
-                href="/pathways"
-                className="transition-colors hover:text-stone-200"
-              >
-                Pathways
-              </Link>
-              <Link
-                href="/about"
-                className="transition-colors hover:text-stone-200"
-              >
-                About
-              </Link>
-              <Link
-                href="/submit"
-                className="rounded border border-amber-700/60 bg-amber-900/20 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-amber-400 transition-colors hover:bg-amber-900/40 hover:text-amber-300"
-              >
-                Submit
-              </Link>
-            </nav>
-          </div>
-        </header>
+              <nav className="flex items-center gap-6 text-sm text-stone-500">
+                <Link
+                  href="/movies"
+                  className="transition-colors hover:text-stone-200"
+                >
+                  Films
+                </Link>
+                <Link
+                  href="/concepts"
+                  className="transition-colors hover:text-stone-200"
+                >
+                  Concepts
+                </Link>
+                <Link
+                  href="/pathways"
+                  className="transition-colors hover:text-stone-200"
+                >
+                  Pathways
+                </Link>
+                <Link
+                  href="/about"
+                  className="transition-colors hover:text-stone-200"
+                >
+                  About
+                </Link>
+                <ThemeToggle />
+                <Link
+                  href="/submit"
+                  className="rounded border border-amber-700/60 bg-amber-900/20 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-amber-400 transition-colors hover:bg-amber-900/40 hover:text-amber-300"
+                >
+                  Submit
+                </Link>
+              </nav>
+            </div>
+          </header>
 
-        <main>{children}</main>
+          <main>{children}</main>
 
-        <footer className="mt-24 border-t border-stone-800/60">
-          <div className="mx-auto flex max-w-7xl flex-col items-center gap-2 px-6 py-10 sm:flex-row sm:justify-between">
-            <p className="text-sm font-semibold uppercase tracking-widest text-stone-500">
-              Frame of Thought
-            </p>
-            <p className="text-xs italic text-stone-700">
-              "The impediment to action advances action. What stands in the way
-              becomes the way." — Marcus Aurelius
-            </p>
-          </div>
-        </footer>
+          <footer className="mt-24 border-t border-stone-800/60">
+            <div className="mx-auto flex max-w-7xl flex-col items-center gap-2 px-6 py-10 sm:flex-row sm:justify-between">
+              <p className="text-sm font-semibold uppercase tracking-widest text-stone-500">
+                Frame of Thought
+              </p>
+              <p className="text-xs italic text-stone-700">
+                &ldquo;The impediment to action advances action. What stands in
+                the way becomes the way.&rdquo; — Marcus Aurelius
+              </p>
+            </div>
+          </footer>
+        </ThemeProvider>
       </body>
     </html>
   );
