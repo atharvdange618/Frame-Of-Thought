@@ -1,14 +1,8 @@
 "use client";
 
 import { useActionState, useState } from "react";
-import {
-  createPathway,
-  CreatePathwayState,
-} from "@/app/actions/createPathway";
-import {
-  PathwayBuilder,
-  PathwayItemDraft,
-} from "@/components/PathwayBuilder";
+import { createPathway, CreatePathwayState } from "@/app/actions/createPathway";
+import { PathwayBuilder, PathwayItemDraft } from "@/components/PathwayBuilder";
 
 interface Movie {
   id: string;
@@ -61,7 +55,7 @@ export function PathwayForm({ movies }: Props) {
   return (
     <form action={formAction} className="flex flex-col gap-6">
       {state.error && (
-        <div className="rounded-sm border border-red-900 bg-red-950/30 px-4 py-3 text-sm text-red-400">
+        <div className="rounded-sm border border-red-300 dark:border-red-900 bg-red-50 dark:bg-red-950/30 px-4 py-3 text-sm text-red-700 dark:text-red-400">
           {state.error}
         </div>
       )}
@@ -69,7 +63,7 @@ export function PathwayForm({ movies }: Props) {
       <div className="flex flex-col gap-2">
         <label
           htmlFor="title"
-          className="text-sm font-semibold uppercase tracking-wider text-stone-400"
+          className="text-sm font-semibold uppercase tracking-wider text-stone-600 dark:text-stone-400"
         >
           Pathway Title
         </label>
@@ -78,7 +72,7 @@ export function PathwayForm({ movies }: Props) {
           name="title"
           required
           placeholder="Films on the nature of time"
-          className="rounded-sm border border-stone-700 bg-stone-900/60 px-4 py-2.5 text-sm text-stone-200 placeholder:text-stone-600 focus:border-amber-700/60 focus:outline-none focus:ring-1 focus:ring-amber-700/60"
+          className="rounded-sm border border-stone-300 dark:border-stone-700 bg-stone-50 dark:bg-stone-900/60 px-4 py-2.5 text-sm text-stone-900 dark:text-stone-200 placeholder:text-stone-400 dark:placeholder:text-stone-600 transition-colors focus:border-amber-600/60 dark:focus:border-amber-700/60 focus:outline-none focus:ring-1 focus:ring-amber-600/60 dark:focus:ring-amber-700/60"
         />
         {state.fieldErrors?.title && (
           <p className="text-xs text-red-400">{state.fieldErrors.title[0]}</p>
@@ -88,7 +82,7 @@ export function PathwayForm({ movies }: Props) {
       <div className="flex flex-col gap-2">
         <label
           htmlFor="description"
-          className="text-sm font-semibold uppercase tracking-wider text-stone-400"
+          className="text-sm font-semibold uppercase tracking-wider text-stone-600 dark:text-stone-400"
         >
           Description
         </label>
@@ -98,7 +92,7 @@ export function PathwayForm({ movies }: Props) {
           rows={4}
           required
           placeholder="What philosophical journey does this pathway trace?"
-          className="rounded-sm border border-stone-700 bg-stone-900/60 px-4 py-2.5 text-sm leading-relaxed text-stone-200 placeholder:text-stone-600 focus:border-amber-700/60 focus:outline-none focus:ring-1 focus:ring-amber-700/60"
+          className="rounded-sm border border-stone-300 dark:border-stone-700 bg-stone-50 dark:bg-stone-900/60 px-4 py-2.5 text-sm leading-relaxed text-stone-900 dark:text-stone-200 placeholder:text-stone-400 dark:placeholder:text-stone-600 transition-colors focus:border-amber-600/60 dark:focus:border-amber-700/60 focus:outline-none focus:ring-1 focus:ring-amber-600/60 dark:focus:ring-amber-700/60"
         />
         {state.fieldErrors?.description && (
           <p className="text-xs text-red-400">
@@ -110,7 +104,7 @@ export function PathwayForm({ movies }: Props) {
       <div className="flex flex-col gap-2">
         <label
           htmlFor="authorName"
-          className="text-sm font-semibold uppercase tracking-wider text-stone-400"
+          className="text-sm font-semibold uppercase tracking-wider text-stone-600 dark:text-stone-400"
         >
           Your Name
         </label>
@@ -118,7 +112,7 @@ export function PathwayForm({ movies }: Props) {
           id="authorName"
           name="authorName"
           required
-          className="rounded-sm border border-stone-700 bg-stone-900/60 px-4 py-2.5 text-sm text-stone-200 focus:border-amber-700/60 focus:outline-none focus:ring-1 focus:ring-amber-700/60"
+          className="rounded-sm border border-stone-300 dark:border-stone-700 bg-stone-50 dark:bg-stone-900/60 px-4 py-2.5 text-sm text-stone-900 dark:text-stone-200 transition-colors focus:border-amber-600/60 dark:focus:border-amber-700/60 focus:outline-none focus:ring-1 focus:ring-amber-600/60 dark:focus:ring-amber-700/60"
         />
         {state.fieldErrors?.authorName && (
           <p className="text-xs text-red-400">
@@ -128,7 +122,7 @@ export function PathwayForm({ movies }: Props) {
       </div>
 
       <div className="flex flex-col gap-3">
-        <label className="text-sm font-semibold uppercase tracking-wider text-stone-400">
+        <label className="text-sm font-semibold uppercase tracking-wider text-stone-600 dark:text-stone-400">
           Films in order
         </label>
         <PathwayBuilder
@@ -151,11 +145,20 @@ export function PathwayForm({ movies }: Props) {
           <select
             value={selectedMovieId}
             onChange={(e) => setSelectedMovieId(e.target.value)}
-            className="flex-1 rounded-sm border border-stone-700 bg-stone-900/60 px-4 py-2.5 text-sm text-stone-200 focus:border-amber-700/60 focus:outline-none"
+            className="flex-1 rounded-sm border border-stone-300 dark:border-stone-700 bg-stone-50 dark:bg-stone-900/60 px-4 py-2.5 text-sm text-stone-900 dark:text-stone-200 focus:border-amber-650 dark:focus:border-amber-700/60 focus:outline-none"
           >
-            <option value="">Add a film…</option>
+            <option
+              value=""
+              className="bg-stone-50 dark:bg-stone-900 text-stone-900 dark:text-stone-200"
+            >
+              Add a film…
+            </option>
             {availableMovies.map((movie) => (
-              <option key={movie.id} value={movie.id}>
+              <option
+                key={movie.id}
+                value={movie.id}
+                className="bg-stone-50 dark:bg-stone-900 text-stone-900 dark:text-stone-200"
+              >
                 {movie.title} ({movie.year})
               </option>
             ))}
@@ -164,7 +167,7 @@ export function PathwayForm({ movies }: Props) {
             type="button"
             onClick={addMovie}
             disabled={!selectedMovieId}
-            className="rounded border border-stone-700 px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-stone-400 transition-colors hover:border-stone-500 hover:text-stone-200 disabled:opacity-40"
+            className="rounded border border-stone-300 dark:border-stone-700 bg-stone-100 dark:bg-stone-900/40 px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-stone-600 dark:text-stone-400 transition-colors hover:border-stone-400 dark:hover:border-stone-500 hover:text-stone-850 dark:hover:text-stone-200 disabled:opacity-40"
           >
             Add Film
           </button>
@@ -176,7 +179,7 @@ export function PathwayForm({ movies }: Props) {
       <button
         type="submit"
         disabled={items.length === 0}
-        className="w-full rounded border border-amber-700/60 bg-amber-900/20 px-6 py-3 text-sm font-semibold uppercase tracking-widest text-amber-400 transition-all hover:bg-amber-900/40 hover:text-amber-300 disabled:opacity-40 sm:w-auto"
+        className="w-full rounded border border-amber-600/40 dark:border-amber-700/60 bg-amber-600/10 dark:bg-amber-900/20 px-6 py-3 text-sm font-semibold uppercase tracking-widest text-amber-700 dark:text-amber-400 transition-all hover:bg-amber-600/20 dark:hover:bg-amber-900/40 hover:text-amber-850 dark:hover:text-amber-300 disabled:opacity-40 sm:w-auto"
       >
         Create Pathway
       </button>

@@ -42,7 +42,7 @@ export function AnalysisForm({ movies, concepts, preselectedMovieId }: Props) {
   return (
     <form action={formAction} className="flex flex-col gap-6">
       {state.error && (
-        <div className="rounded-sm border border-red-900 bg-red-950/30 px-4 py-3 text-sm text-red-400">
+        <div className="rounded-sm border border-red-300 dark:border-red-900 bg-red-50 dark:bg-red-950/30 px-4 py-3 text-sm text-red-700 dark:text-red-400">
           {state.error}
         </div>
       )}
@@ -50,7 +50,7 @@ export function AnalysisForm({ movies, concepts, preselectedMovieId }: Props) {
       <div className="flex flex-col gap-2">
         <label
           htmlFor="movieId"
-          className="text-sm font-semibold uppercase tracking-wider text-stone-400"
+          className="text-sm font-semibold uppercase tracking-wider text-stone-600 dark:text-stone-400"
         >
           Film
         </label>
@@ -59,11 +59,15 @@ export function AnalysisForm({ movies, concepts, preselectedMovieId }: Props) {
           name="movieId"
           defaultValue={preselectedMovieId || ""}
           required
-          className="rounded-sm border border-stone-700 bg-stone-900/60 px-4 py-2.5 text-sm text-stone-200 transition-colors focus:border-amber-700/60 focus:outline-none focus:ring-1 focus:ring-amber-700/60"
+          className="rounded-sm border border-stone-300 dark:border-stone-700 bg-stone-50 dark:bg-stone-900/60 px-4 py-2.5 text-sm text-stone-900 dark:text-stone-200 transition-colors focus:border-amber-600/60 dark:focus:border-amber-700/60 focus:outline-none focus:ring-1 focus:ring-amber-600/60 dark:focus:ring-amber-700/60"
         >
           <option value="">Select a film</option>
           {movies.map((movie) => (
-            <option key={movie.id} value={movie.id}>
+            <option
+              key={movie.id}
+              value={movie.id}
+              className="bg-stone-50 dark:bg-stone-900 text-stone-900 dark:text-stone-200"
+            >
               {movie.title} ({movie.year})
             </option>
           ))}
@@ -76,7 +80,7 @@ export function AnalysisForm({ movies, concepts, preselectedMovieId }: Props) {
       <div className="flex flex-col gap-2">
         <label
           htmlFor="authorName"
-          className="text-sm font-semibold uppercase tracking-wider text-stone-400"
+          className="text-sm font-semibold uppercase tracking-wider text-stone-600 dark:text-stone-400"
         >
           Your Name
         </label>
@@ -86,7 +90,7 @@ export function AnalysisForm({ movies, concepts, preselectedMovieId }: Props) {
           name="authorName"
           placeholder="Marcus Aurelius"
           required
-          className="rounded-sm border border-stone-700 bg-stone-900/60 px-4 py-2.5 text-sm text-stone-200 placeholder:text-stone-600 transition-colors focus:border-amber-700/60 focus:outline-none focus:ring-1 focus:ring-amber-700/60"
+          className="rounded-sm border border-stone-300 dark:border-stone-700 bg-stone-50 dark:bg-stone-900/60 px-4 py-2.5 text-sm text-stone-900 dark:text-stone-200 placeholder:text-stone-400 dark:placeholder:text-stone-600 transition-colors focus:border-amber-600/60 dark:focus:border-amber-700/60 focus:outline-none focus:ring-1 focus:ring-amber-600/60 dark:focus:ring-amber-700/60"
         />
         {state.fieldErrors?.authorName && (
           <p className="text-xs text-red-400">
@@ -98,7 +102,7 @@ export function AnalysisForm({ movies, concepts, preselectedMovieId }: Props) {
       <div className="flex flex-col gap-2">
         <label
           htmlFor="title"
-          className="text-sm font-semibold uppercase tracking-wider text-stone-400"
+          className="text-sm font-semibold uppercase tracking-wider text-stone-600 dark:text-stone-400"
         >
           Analysis Title
         </label>
@@ -108,7 +112,7 @@ export function AnalysisForm({ movies, concepts, preselectedMovieId }: Props) {
           name="title"
           placeholder="The Stoic Philosophy in Blade Runner 2049"
           required
-          className="rounded-sm border border-stone-700 bg-stone-900/60 px-4 py-2.5 text-sm text-stone-200 placeholder:text-stone-600 transition-colors focus:border-amber-700/60 focus:outline-none focus:ring-1 focus:ring-amber-700/60"
+          className="rounded-sm border border-stone-300 dark:border-stone-700 bg-stone-50 dark:bg-stone-900/60 px-4 py-2.5 text-sm text-stone-900 dark:text-stone-200 placeholder:text-stone-400 dark:placeholder:text-stone-600 transition-colors focus:border-amber-600/60 dark:focus:border-amber-700/60 focus:outline-none focus:ring-1 focus:ring-amber-600/60 dark:focus:ring-amber-700/60"
         />
         {state.fieldErrors?.title && (
           <p className="text-xs text-red-400">{state.fieldErrors.title[0]}</p>
@@ -118,7 +122,7 @@ export function AnalysisForm({ movies, concepts, preselectedMovieId }: Props) {
       <div className="flex flex-col gap-2">
         <label
           htmlFor="body"
-          className="text-sm font-semibold uppercase tracking-wider text-stone-400"
+          className="text-sm font-semibold uppercase tracking-wider text-stone-600 dark:text-stone-400"
         >
           Analysis
         </label>
@@ -128,7 +132,7 @@ export function AnalysisForm({ movies, concepts, preselectedMovieId }: Props) {
           rows={8}
           placeholder="Write your philosophical analysis..."
           required
-          className="rounded-sm border border-stone-700 bg-stone-900/60 px-4 py-2.5 text-sm leading-relaxed text-stone-200 placeholder:text-stone-600 transition-colors focus:border-amber-700/60 focus:outline-none focus:ring-1 focus:ring-amber-700/60"
+          className="rounded-sm border border-stone-300 dark:border-stone-700 bg-stone-50 dark:bg-stone-900/60 px-4 py-2.5 text-sm leading-relaxed text-stone-900 dark:text-stone-200 placeholder:text-stone-400 dark:placeholder:text-stone-600 transition-colors focus:border-amber-600/60 dark:focus:border-amber-700/60 focus:outline-none focus:ring-1 focus:ring-amber-600/60 dark:focus:ring-amber-700/60"
         />
         {state.fieldErrors?.body && (
           <p className="text-xs text-red-400">{state.fieldErrors.body[0]}</p>
@@ -136,14 +140,14 @@ export function AnalysisForm({ movies, concepts, preselectedMovieId }: Props) {
       </div>
 
       <div className="flex flex-col gap-3">
-        <label className="text-sm font-semibold uppercase tracking-wider text-stone-400">
+        <label className="text-sm font-semibold uppercase tracking-wider text-stone-600 dark:text-stone-400">
           Philosophical Concepts (select at least one)
         </label>
         <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
           {concepts.map((concept) => (
             <label
               key={concept.id}
-              className="flex cursor-pointer items-center gap-3 rounded-sm border border-stone-800 bg-stone-900/40 px-4 py-3 text-sm text-stone-300 transition-colors hover:border-amber-700/40 hover:bg-stone-900/70"
+              className="flex cursor-pointer items-center gap-3 rounded-sm border border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-900/40 px-4 py-3 text-sm text-stone-700 dark:text-stone-300 transition-colors hover:border-amber-600/40 dark:hover:border-amber-700/40 hover:bg-stone-100/30 dark:hover:bg-stone-900/70"
             >
               <input
                 type="checkbox"
@@ -151,7 +155,7 @@ export function AnalysisForm({ movies, concepts, preselectedMovieId }: Props) {
                 value={concept.id}
                 checked={selectedConcepts.includes(concept.id)}
                 onChange={() => toggleConcept(concept.id)}
-                className="h-4 w-4 rounded border-stone-600 bg-stone-800 text-amber-600 focus:ring-amber-700/60 focus:ring-offset-0"
+                className="h-4 w-4 rounded border-stone-300 dark:border-stone-600 bg-stone-100 dark:bg-stone-850 text-amber-600 focus:ring-amber-600/60 dark:focus:ring-amber-700/60 focus:ring-offset-0"
               />
               {concept.name}
             </label>
@@ -166,7 +170,7 @@ export function AnalysisForm({ movies, concepts, preselectedMovieId }: Props) {
 
       <button
         type="submit"
-        className="mt-2 w-full rounded border border-amber-700/60 bg-amber-900/20 px-6 py-3 text-sm font-semibold uppercase tracking-widest text-amber-400 transition-all hover:bg-amber-900/40 hover:text-amber-300 focus:outline-none focus:ring-2 focus:ring-amber-700/60 focus:ring-offset-2 focus:ring-offset-[#1a1612] sm:w-auto"
+        className="mt-2 w-full rounded border border-amber-600/40 dark:border-amber-700/60 bg-amber-600/10 dark:bg-amber-900/20 px-6 py-3 text-sm font-semibold uppercase tracking-widest text-amber-700 dark:text-amber-400 transition-all hover:bg-amber-600/20 dark:hover:bg-amber-900/40 hover:text-amber-850 dark:hover:text-amber-300 focus:outline-none focus:ring-2 focus:ring-amber-600/60 dark:focus:ring-amber-700/60 focus:ring-offset-2 focus:ring-offset-background sm:w-auto"
       >
         Submit Analysis
       </button>

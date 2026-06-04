@@ -24,11 +24,15 @@ interface Props {
 
 export function AnalysisCard({ analysis }: Props) {
   return (
-    <article className="rounded-sm border border-stone-800 bg-stone-900/40 p-6 transition-colors hover:border-stone-700">
+    <article className="rounded-sm border border-card-border bg-card-bg p-6 transition-all duration-200 hover:border-stone-400 dark:hover:border-stone-700">
       <div className="mb-3 flex items-start justify-between gap-4">
         <div>
-          <h3 className="font-semibold text-stone-100">{analysis.title}</h3>
-          <p className="mt-0.5 text-xs text-stone-600">by {analysis.authorName}</p>
+          <h3 className="font-semibold text-stone-900 dark:text-stone-100">
+            {analysis.title}
+          </h3>
+          <p className="mt-0.5 text-xs text-stone-500 dark:text-stone-500">
+            by {analysis.authorName}
+          </p>
         </div>
         <VoteButtons
           analysisId={analysis.id}
@@ -36,7 +40,7 @@ export function AnalysisCard({ analysis }: Props) {
         />
       </div>
 
-      <p className="mb-4 line-clamp-3 text-sm leading-relaxed text-stone-500">
+      <p className="mb-4 line-clamp-3 text-sm leading-relaxed text-stone-600 dark:text-stone-400">
         {analysis.body}
       </p>
 
@@ -45,7 +49,7 @@ export function AnalysisCard({ analysis }: Props) {
           <Link
             key={concept.id}
             href={`/concepts/${concept.slug}`}
-            className="rounded-full border border-stone-700 bg-stone-900 px-3 py-1 text-xs text-stone-400 transition-colors hover:border-amber-700/50 hover:text-amber-400"
+            className="rounded-full border border-stone-300 dark:border-stone-700 bg-stone-100 dark:bg-stone-900 px-3 py-1 text-xs text-stone-600 dark:text-stone-400 transition-colors hover:border-amber-600/50 dark:hover:border-amber-700/50 hover:text-amber-600 dark:hover:text-amber-400"
           >
             {concept.name}
           </Link>

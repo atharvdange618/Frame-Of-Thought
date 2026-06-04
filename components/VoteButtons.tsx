@@ -32,7 +32,7 @@ export function VoteButtons({ analysisId, initialUpvotes }: Props) {
           onChange={(e) => setVoterName(e.target.value)}
           placeholder="Your name"
           aria-label="Voter name"
-          className="w-24 rounded border border-stone-700 bg-stone-900/60 px-2 py-1 text-xs text-stone-300 placeholder:text-stone-600 focus:border-amber-700/60 focus:outline-none"
+          className="w-24 rounded border border-stone-300 dark:border-stone-700 bg-stone-50 dark:bg-stone-900/60 px-2 py-1 text-xs text-stone-900 dark:text-stone-300 placeholder:text-stone-400 dark:placeholder:text-stone-600 focus:border-amber-600/60 dark:focus:border-amber-700/60 focus:outline-none"
         />
         <form action={formAction}>
           <input type="hidden" name="analysisId" value={analysisId} />
@@ -41,7 +41,7 @@ export function VoteButtons({ analysisId, initialUpvotes }: Props) {
           <button
             type="submit"
             disabled={pending || !voterName.trim()}
-            className="rounded border border-stone-700 px-2 py-1 text-xs text-stone-400 transition-colors hover:border-amber-700/50 hover:text-amber-400 disabled:opacity-40"
+            className="rounded border border-stone-300 dark:border-stone-700 px-2 py-1 text-xs text-stone-600 dark:text-stone-400 transition-colors hover:border-amber-600/50 dark:hover:border-amber-700/50 hover:text-amber-600 dark:hover:text-amber-400 disabled:opacity-40"
             aria-label="Upvote"
           >
             +
@@ -54,7 +54,7 @@ export function VoteButtons({ analysisId, initialUpvotes }: Props) {
           <button
             type="submit"
             disabled={pending || !voterName.trim()}
-            className="rounded border border-stone-700 px-2 py-1 text-xs text-stone-400 transition-colors hover:border-stone-600 hover:text-stone-300 disabled:opacity-40"
+            className="rounded border border-stone-300 dark:border-stone-700 px-2 py-1 text-xs text-stone-600 dark:text-stone-400 transition-colors hover:border-stone-400 dark:hover:border-stone-600 hover:text-stone-850 dark:hover:text-stone-200 disabled:opacity-40"
             aria-label="Downvote"
           >
             −
@@ -63,7 +63,9 @@ export function VoteButtons({ analysisId, initialUpvotes }: Props) {
       </div>
 
       {state.error && (
-        <p className="max-w-[10rem] text-right text-xs text-red-400">{state.error}</p>
+        <p className="max-w-[10rem] text-right text-xs text-red-400">
+          {state.error}
+        </p>
       )}
     </div>
   );

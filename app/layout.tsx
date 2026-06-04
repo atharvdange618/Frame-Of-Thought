@@ -29,14 +29,14 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#1a1612] text-stone-200`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground transition-colors duration-200`}
       >
         <ThemeProvider>
-          <header className="sticky top-0 z-50 border-b border-stone-800 bg-[#1a1612]/90 backdrop-blur-sm">
+          <header className="sticky top-0 z-50 border-b border-header-border bg-header-bg backdrop-blur-sm transition-colors duration-200">
             <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
               <Link
                 href="/"
-                className="text-base font-semibold tracking-widest uppercase text-stone-300 transition-colors hover:text-stone-100"
+                className="text-base font-semibold tracking-widest uppercase text-stone-800 dark:text-stone-300 transition-colors hover:text-stone-950 dark:hover:text-stone-100"
               >
                 Frame of Thought
               </Link>
@@ -44,32 +44,32 @@ export default function RootLayout({
               <nav className="flex items-center gap-6 text-sm text-stone-500">
                 <Link
                   href="/movies"
-                  className="transition-colors hover:text-stone-200"
+                  className="transition-colors hover:text-stone-800 dark:hover:text-stone-200"
                 >
                   Films
                 </Link>
                 <Link
                   href="/concepts"
-                  className="transition-colors hover:text-stone-200"
+                  className="transition-colors hover:text-stone-800 dark:hover:text-stone-200"
                 >
                   Concepts
                 </Link>
                 <Link
                   href="/pathways"
-                  className="transition-colors hover:text-stone-200"
+                  className="transition-colors hover:text-stone-800 dark:hover:text-stone-200"
                 >
                   Pathways
                 </Link>
                 <Link
                   href="/about"
-                  className="transition-colors hover:text-stone-200"
+                  className="transition-colors hover:text-stone-800 dark:hover:text-stone-200"
                 >
                   About
                 </Link>
                 <ThemeToggle />
                 <Link
                   href="/submit"
-                  className="rounded border border-amber-700/60 bg-amber-900/20 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-amber-400 transition-colors hover:bg-amber-900/40 hover:text-amber-300"
+                  className="rounded border border-amber-600/40 dark:border-amber-700/60 bg-amber-600/10 dark:bg-amber-900/20 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-amber-600 dark:text-amber-400 transition-colors hover:bg-amber-600/20 dark:hover:bg-amber-900/40 hover:text-amber-700 dark:hover:text-amber-300"
                 >
                   Submit
                 </Link>

@@ -63,13 +63,13 @@ function SortableItem({
     <li
       ref={setNodeRef}
       style={style}
-      className="rounded-sm border border-stone-800 bg-stone-900/50 p-4"
+      className="rounded-sm border border-card-border bg-card-bg p-4"
     >
       <div className="mb-3 flex items-start justify-between gap-3">
         <div className="flex items-start gap-3">
           <button
             type="button"
-            className="mt-0.5 cursor-grab touch-none text-stone-600 hover:text-stone-400 active:cursor-grabbing"
+            className="mt-0.5 cursor-grab touch-none text-stone-400 dark:text-stone-600 hover:text-stone-700 dark:hover:text-stone-400 active:cursor-grabbing"
             aria-label={`Drag to reorder ${item.title}`}
             {...attributes}
             {...listeners}
@@ -80,16 +80,18 @@ function SortableItem({
             <span className="text-xs font-medium uppercase tracking-wider text-amber-600/80">
               {index + 1}
             </span>
-            <p className="font-medium text-stone-200">
+            <p className="font-medium text-stone-850 dark:text-stone-200">
               {item.title}{" "}
-              <span className="text-stone-600">({item.year})</span>
+              <span className="text-stone-500 dark:text-stone-500">
+                ({item.year})
+              </span>
             </p>
           </div>
         </div>
         <button
           type="button"
           onClick={() => onRemove(item.clientId)}
-          className="text-xs text-stone-600 transition-colors hover:text-red-400"
+          className="text-xs text-stone-500 transition-colors hover:text-red-600 dark:hover:text-red-400"
         >
           Remove
         </button>
@@ -99,7 +101,7 @@ function SortableItem({
         value={item.note}
         onChange={(e) => onNoteChange(item.clientId, e.target.value)}
         placeholder="Why this film belongs in the pathway…"
-        className="w-full rounded-sm border border-stone-700 bg-stone-900/60 px-3 py-2 text-sm text-stone-300 placeholder:text-stone-600 focus:border-amber-700/60 focus:outline-none"
+        className="w-full rounded-sm border border-stone-300 dark:border-stone-700 bg-stone-50 dark:bg-stone-900/60 px-3 py-2 text-sm text-stone-900 dark:text-stone-200 placeholder:text-stone-400 dark:placeholder:text-stone-600 focus:border-amber-600/60 dark:focus:border-amber-700/60 focus:outline-none"
       />
     </li>
   );
@@ -134,7 +136,7 @@ export function PathwayBuilder({
 
   if (items.length === 0) {
     return (
-      <p className="rounded-sm border border-dashed border-stone-800 px-4 py-8 text-center text-sm italic text-stone-600">
+      <p className="rounded-sm border border-dashed border-stone-300 dark:border-stone-800 px-4 py-8 text-center text-sm italic text-stone-550 dark:text-stone-650">
         Add films below, then drag to set the order.
       </p>
     );
