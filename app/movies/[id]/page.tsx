@@ -2,6 +2,7 @@ import { AnalysisList } from "@/components/AnalysisList";
 import { prisma } from "@/lib/prisma";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import Image from "next/image";
 
 export const dynamic = "force-dynamic";
 
@@ -40,7 +41,7 @@ export default async function MovieDetailPage({ params }: Props) {
         <div className="mb-8">
           <Link
             href="/movies"
-            className="text-xs uppercase tracking-widest text-stone-500 hover:text-stone-800 dark:text-stone-600 dark:hover:text-stone-400"
+            className="text-xs uppercase tracking-widest text-stone-550 hover:text-stone-800 dark:text-stone-600 dark:hover:text-stone-400"
           >
             ← Films
           </Link>
@@ -48,12 +49,15 @@ export default async function MovieDetailPage({ params }: Props) {
 
         <div className="flex flex-col gap-8 sm:flex-row sm:items-start">
           <div className="w-full shrink-0 sm:w-48 md:w-56">
-            <div className="aspect-[2/3] overflow-hidden rounded-sm bg-stone-200 dark:bg-stone-900 ring-1 ring-stone-300 dark:ring-stone-800">
+            <div className="relative aspect-[2/3] overflow-hidden rounded-sm bg-stone-200 dark:bg-stone-900 ring-1 ring-stone-300 dark:ring-stone-800">
               {movie.posterUrl ? (
-                <img
+                <Image
                   src={movie.posterUrl}
                   alt={`${movie.title} poster`}
-                  className="h-full w-full object-cover"
+                  fill
+                  sizes="(max-width: 640px) 100vw, 224px"
+                  className="object-cover"
+                  priority
                 />
               ) : (
                 <div className="flex h-full w-full items-center justify-center">

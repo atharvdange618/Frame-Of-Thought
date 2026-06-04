@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import Link from "next/link";
+import Image from "next/image";
 
 export const revalidate = 300;
 
@@ -39,10 +40,12 @@ export default async function MoviesPage() {
             >
               <div className="relative aspect-[2/3] overflow-hidden rounded-sm bg-stone-200 dark:bg-stone-900 ring-1 ring-stone-300 dark:ring-stone-800 transition-all duration-200 group-hover:ring-amber-700/50 group-hover:shadow-lg group-hover:shadow-black/40">
                 {movie.posterUrl ? (
-                  <img
+                  <Image
                     src={movie.posterUrl}
                     alt={`${movie.title} poster`}
-                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    fill
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 20vw"
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
                   />
                 ) : (
                   <div className="flex h-full w-full items-center justify-center">

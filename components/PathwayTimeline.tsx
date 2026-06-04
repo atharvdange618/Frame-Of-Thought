@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export interface PathwayTimelineItem {
   sortOrder: number;
@@ -39,12 +40,14 @@ export function PathwayTimeline({ items }: Props) {
               href={`/movies/${item.movie.id}`}
               className="group flex flex-col gap-3 sm:flex-row sm:items-start"
             >
-              <div className="h-24 w-16 shrink-0 overflow-hidden rounded-sm bg-stone-200 dark:bg-stone-900 ring-1 ring-stone-300 dark:ring-stone-800">
+              <div className="relative h-24 w-16 shrink-0 overflow-hidden rounded-sm bg-stone-200 dark:bg-stone-900 ring-1 ring-stone-300 dark:ring-stone-800">
                 {item.movie.posterUrl ? (
-                  <img
+                  <Image
                     src={item.movie.posterUrl}
-                    alt=""
-                    className="h-full w-full object-cover"
+                    alt={`${item.movie.title} poster`}
+                    fill
+                    sizes="64px"
+                    className="object-cover"
                   />
                 ) : (
                   <div className="flex h-full items-center justify-center text-stone-700">
