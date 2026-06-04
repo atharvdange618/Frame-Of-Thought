@@ -17,7 +17,7 @@ export default function AboutPage() {
         </p>
 
         <section className="mt-12 space-y-4">
-          <h2 className="text-lg font-semibold uppercase tracking-wider text-stone-750 dark:text-stone-400">
+          <h2 className="text-lg font-semibold uppercase tracking-wider text-stone-700 dark:text-stone-400">
             How it works
           </h2>
           <ul className="list-inside list-disc space-y-2 text-sm text-stone-600 dark:text-stone-400">
@@ -39,7 +39,7 @@ export default function AboutPage() {
           </Link>
           <Link
             href="/pathways/new"
-            className="rounded border border-stone-300 dark:border-stone-700 bg-stone-100 dark:bg-stone-900/40 px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-stone-600 dark:text-stone-400 transition-colors hover:border-stone-400 dark:hover:border-stone-500 hover:text-stone-850 dark:hover:text-stone-200"
+            className="rounded border border-stone-300 dark:border-stone-700 bg-stone-100 dark:bg-stone-900/40 px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-stone-600 dark:text-stone-400 transition-colors hover:border-stone-400 dark:hover:border-stone-500 hover:text-stone-800 dark:hover:text-stone-200"
           >
             Create a Pathway
           </Link>

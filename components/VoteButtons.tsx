@@ -54,7 +54,7 @@ export function VoteButtons({ analysisId, initialUpvotes }: Props) {
           <button
             type="submit"
             disabled={pending || !voterName.trim()}
-            className="rounded border border-stone-300 dark:border-stone-700 px-2 py-1 text-xs text-stone-600 dark:text-stone-400 transition-colors hover:border-stone-400 dark:hover:border-stone-600 hover:text-stone-850 dark:hover:text-stone-200 disabled:opacity-40"
+            className="rounded border border-stone-300 dark:border-stone-700 px-2 py-1 text-xs text-stone-600 dark:text-stone-400 transition-colors hover:border-stone-400 dark:hover:border-stone-600 hover:text-stone-800 dark:hover:text-stone-200 disabled:opacity-40"
             aria-label="Downvote"
           >
             −

@@ -155,7 +155,7 @@ export function AnalysisForm({ movies, concepts, preselectedMovieId }: Props) {
                 value={concept.id}
                 checked={selectedConcepts.includes(concept.id)}
                 onChange={() => toggleConcept(concept.id)}
-                className="h-4 w-4 rounded border-stone-300 dark:border-stone-600 bg-stone-100 dark:bg-stone-850 text-amber-600 focus:ring-amber-600/60 dark:focus:ring-amber-700/60 focus:ring-offset-0"
+                className="h-4 w-4 rounded border-stone-300 dark:border-stone-600 bg-stone-100 dark:bg-stone-800 text-amber-600 focus:ring-amber-600/60 dark:focus:ring-amber-700/60 focus:ring-offset-0"
               />
               {concept.name}
             </label>
@@ -170,7 +170,7 @@ export function AnalysisForm({ movies, concepts, preselectedMovieId }: Props) {
 
       <button
         type="submit"
-        className="mt-2 w-full rounded border border-amber-600/40 dark:border-amber-700/60 bg-amber-600/10 dark:bg-amber-900/20 px-6 py-3 text-sm font-semibold uppercase tracking-widest text-amber-700 dark:text-amber-400 transition-all hover:bg-amber-600/20 dark:hover:bg-amber-900/40 hover:text-amber-850 dark:hover:text-amber-300 focus:outline-none focus:ring-2 focus:ring-amber-600/60 dark:focus:ring-amber-700/60 focus:ring-offset-2 focus:ring-offset-background sm:w-auto"
+        className="mt-2 w-full rounded border border-amber-600/40 dark:border-amber-700/60 bg-amber-600/10 dark:bg-amber-900/20 px-6 py-3 text-sm font-semibold uppercase tracking-widest text-amber-700 dark:text-amber-400 transition-all hover:bg-amber-600/20 dark:hover:bg-amber-900/40 hover:text-amber-800 dark:hover:text-amber-300 focus:outline-none focus:ring-2 focus:ring-amber-600/60 dark:focus:ring-amber-700/60 focus:ring-offset-2 focus:ring-offset-background sm:w-auto"
       >
         Submit Analysis
       </button>

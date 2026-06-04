@@ -145,7 +145,7 @@ export function PathwayForm({ movies }: Props) {
           <select
             value={selectedMovieId}
             onChange={(e) => setSelectedMovieId(e.target.value)}
-            className="flex-1 rounded-sm border border-stone-300 dark:border-stone-700 bg-stone-50 dark:bg-stone-900/60 px-4 py-2.5 text-sm text-stone-900 dark:text-stone-200 focus:border-amber-650 dark:focus:border-amber-700/60 focus:outline-none"
+            className="flex-1 rounded-sm border border-stone-300 dark:border-stone-700 bg-stone-50 dark:bg-stone-900/60 px-4 py-2.5 text-sm text-stone-900 dark:text-stone-200 focus:border-amber-600 dark:focus:border-amber-700/60 focus:outline-none"
           >
             <option
               value=""
@@ -167,7 +167,7 @@ export function PathwayForm({ movies }: Props) {
             type="button"
             onClick={addMovie}
             disabled={!selectedMovieId}
-            className="rounded border border-stone-300 dark:border-stone-700 bg-stone-100 dark:bg-stone-900/40 px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-stone-600 dark:text-stone-400 transition-colors hover:border-stone-400 dark:hover:border-stone-500 hover:text-stone-850 dark:hover:text-stone-200 disabled:opacity-40"
+            className="rounded border border-stone-300 dark:border-stone-700 bg-stone-100 dark:bg-stone-900/40 px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-stone-600 dark:text-stone-400 transition-colors hover:border-stone-400 dark:hover:border-stone-500 hover:text-stone-800 dark:hover:text-stone-200 disabled:opacity-40"
           >
             Add Film
           </button>
@@ -179,7 +179,7 @@ export function PathwayForm({ movies }: Props) {
       <button
         type="submit"
         disabled={items.length === 0}
-        className="w-full rounded border border-amber-600/40 dark:border-amber-700/60 bg-amber-600/10 dark:bg-amber-900/20 px-6 py-3 text-sm font-semibold uppercase tracking-widest text-amber-700 dark:text-amber-400 transition-all hover:bg-amber-600/20 dark:hover:bg-amber-900/40 hover:text-amber-850 dark:hover:text-amber-300 disabled:opacity-40 sm:w-auto"
+        className="w-full rounded border border-amber-600/40 dark:border-amber-700/60 bg-amber-600/10 dark:bg-amber-900/20 px-6 py-3 text-sm font-semibold uppercase tracking-widest text-amber-700 dark:text-amber-400 transition-all hover:bg-amber-600/20 dark:hover:bg-amber-900/40 hover:text-amber-800 dark:hover:text-amber-300 disabled:opacity-40 sm:w-auto"
       >
         Create Pathway
       </button>

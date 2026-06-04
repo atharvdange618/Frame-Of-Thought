@@ -30,7 +30,7 @@ export function AnalysisCard({ analysis }: Props) {
           <h3 className="font-semibold text-stone-900 dark:text-stone-100 hover:text-amber-600 dark:hover:text-amber-400 transition-colors">
             <Link href={`/analyses/${analysis.id}`}>{analysis.title}</Link>
           </h3>
-          <p className="mt-0.5 text-xs text-stone-550 dark:text-stone-500">
+          <p className="mt-0.5 text-xs text-stone-500 dark:text-stone-400">
             by {analysis.authorName}
           </p>
         </div>

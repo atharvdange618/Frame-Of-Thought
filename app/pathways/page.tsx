@@ -34,12 +34,12 @@ export default async function PathwaysPage() {
 
         {pathways.length === 0 ? (
           <div className="rounded-sm border border-dashed border-stone-300 dark:border-stone-800 px-8 py-12 text-center">
-            <p className="text-sm italic text-stone-550 dark:text-stone-500">
+            <p className="text-sm italic text-stone-500 dark:text-stone-400">
               No pathways yet. Be the first to curate a journey.
             </p>
             <Link
               href="/pathways/new"
-              className="mt-4 inline-flex items-center gap-2 rounded border border-stone-300 dark:border-stone-700 bg-stone-100 dark:bg-stone-900/40 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-stone-600 dark:text-stone-400 transition-colors hover:border-stone-400 dark:hover:border-stone-500 hover:text-stone-850 dark:hover:text-stone-200"
+              className="mt-4 inline-flex items-center gap-2 rounded border border-stone-300 dark:border-stone-700 bg-stone-100 dark:bg-stone-900/40 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-stone-600 dark:text-stone-400 transition-colors hover:border-stone-400 dark:hover:border-stone-500 hover:text-stone-800 dark:hover:text-stone-200"
             >
               Create a Pathway
             </Link>

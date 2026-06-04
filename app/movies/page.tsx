@@ -58,10 +58,10 @@ export default async function MoviesPage() {
                 <h2 className="text-sm font-semibold leading-snug text-stone-800 dark:text-stone-200 transition-colors group-hover:text-amber-600 dark:group-hover:text-amber-400">
                   {movie.title}
                 </h2>
-                <p className="text-xs text-stone-500 dark:text-stone-500">
+                <p className="text-xs text-stone-500 dark:text-stone-400">
                   {movie.year} · {movie.director}
                 </p>
-                <p className="text-xs text-stone-400 dark:text-stone-600">
+                <p className="text-xs text-stone-400 dark:text-stone-500">
                   {movie._count.analyses}{" "}
                   {movie._count.analyses === 1 ? "analysis" : "analyses"}
                 </p>

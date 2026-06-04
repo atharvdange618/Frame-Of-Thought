@@ -56,10 +56,10 @@ export function PathwayTimeline({ items }: Props) {
                 )}
               </div>
               <div>
-                <h3 className="font-semibold text-stone-850 dark:text-stone-100 transition-colors group-hover:text-amber-600 dark:group-hover:text-amber-400">
+                <h3 className="font-semibold text-stone-800 dark:text-stone-100 transition-colors group-hover:text-amber-600 dark:group-hover:text-amber-400">
                   {item.movie.title}
                 </h3>
-                <p className="text-xs text-stone-500 dark:text-stone-500">
+                <p className="text-xs text-stone-500 dark:text-stone-400">
                   {item.movie.year} · {item.movie.director}
                 </p>
                 {item.note && (

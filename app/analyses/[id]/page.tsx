@@ -55,7 +55,7 @@ export default async function AnalysisDetailPage({ params }: Props) {
                 <h1 className="text-3xl font-bold tracking-tight text-stone-900 dark:text-stone-100 sm:text-4xl">
                   {analysis.title}
                 </h1>
-                <p className="mt-2 text-sm text-stone-500 dark:text-stone-500">
+                <p className="mt-2 text-sm text-stone-500 dark:text-stone-400">
                   Written by{" "}
                   <span className="font-semibold">{analysis.authorName}</span>
                 </p>
@@ -73,7 +73,7 @@ export default async function AnalysisDetailPage({ params }: Props) {
               {analysis.body.split("\n\n").map((paragraph, index) => (
                 <p
                   key={index}
-                  className="mb-6 text-base leading-relaxed text-stone-700 dark:text-stone-350"
+                  className="mb-6 text-base leading-relaxed text-stone-700 dark:text-stone-300"
                 >
                   {paragraph}
                 </p>
@@ -121,7 +121,7 @@ export default async function AnalysisDetailPage({ params }: Props) {
               <h3 className="font-bold text-stone-900 dark:text-stone-100">
                 {analysis.movie.title}
               </h3>
-              <p className="text-xs text-stone-550 dark:text-stone-500">
+              <p className="text-xs text-stone-500 dark:text-stone-400">
                 {analysis.movie.year} · Dir. {analysis.movie.director}
               </p>
 
@@ -133,7 +133,7 @@ export default async function AnalysisDetailPage({ params }: Props) {
 
               <Link
                 href={`/movies/${analysis.movie.id}`}
-                className="mt-4 block w-full rounded border border-stone-300 dark:border-stone-700 bg-stone-50 dark:bg-stone-900/40 py-2 text-center text-xs font-semibold uppercase tracking-wider text-stone-600 dark:text-stone-400 transition-colors hover:border-stone-400 dark:hover:border-stone-600 hover:text-stone-850 dark:hover:text-stone-200"
+                className="mt-4 block w-full rounded border border-stone-300 dark:border-stone-700 bg-stone-50 dark:bg-stone-900/40 py-2 text-center text-xs font-semibold uppercase tracking-wider text-stone-600 dark:text-stone-400 transition-colors hover:border-stone-400 dark:hover:border-stone-600 hover:text-stone-800 dark:hover:text-stone-200"
               >
                 View Movie Page
               </Link>

@@ -81,7 +81,7 @@ export default async function ConceptDetailPage({ params }: Props) {
             </p>
             <Link
               href="/submit"
-              className="mt-4 inline-flex items-center gap-2 rounded border border-stone-300 dark:border-stone-700 bg-stone-100 dark:bg-stone-900/40 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-stone-600 dark:text-stone-400 transition-colors hover:border-stone-400 dark:hover:border-stone-500 hover:text-stone-850 dark:hover:text-stone-200"
+              className="mt-4 inline-flex items-center gap-2 rounded border border-stone-300 dark:border-stone-700 bg-stone-100 dark:bg-stone-900/40 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-stone-600 dark:text-stone-400 transition-colors hover:border-stone-400 dark:hover:border-stone-500 hover:text-stone-800 dark:hover:text-stone-200"
             >
               Be the first to write one
             </Link>
@@ -92,14 +92,14 @@ export default async function ConceptDetailPage({ params }: Props) {
               <Link
                 key={analysis.id}
                 href={`/movies/${analysis.movie.id}`}
-                className="group rounded-sm border border-card-border bg-card-bg p-6 transition-all duration-200 hover:border-stone-400 dark:hover:border-stone-750"
+                className="group rounded-sm border border-card-border bg-card-bg p-6 transition-all duration-200 hover:border-stone-400 dark:hover:border-stone-700"
               >
                 <div className="mb-2 flex items-start justify-between gap-4">
                   <div>
-                    <h3 className="font-semibold text-stone-850 dark:text-stone-100 transition-colors group-hover:text-amber-600 dark:group-hover:text-amber-400">
+                    <h3 className="font-semibold text-stone-800 dark:text-stone-100 transition-colors group-hover:text-amber-600 dark:group-hover:text-amber-400">
                       {analysis.title}
                     </h3>
-                    <p className="mt-0.5 text-xs text-stone-500">
+                    <p className="mt-0.5 text-xs text-stone-500 dark:text-stone-400">
                       by {analysis.authorName}
                     </p>
                   </div>
@@ -108,9 +108,9 @@ export default async function ConceptDetailPage({ params }: Props) {
                   </span>
                 </div>
 
-                <p className="text-xs text-stone-500 dark:text-stone-500">
+                <p className="text-xs text-stone-500 dark:text-stone-400">
                   {analysis.movie.title}{" "}
-                  <span className="text-stone-400 dark:text-stone-600">
+                  <span className="text-stone-400 dark:text-stone-500">
                     ({analysis.movie.year})
                   </span>
                 </p>

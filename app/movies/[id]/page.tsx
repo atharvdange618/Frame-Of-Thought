@@ -41,7 +41,7 @@ export default async function MovieDetailPage({ params }: Props) {
         <div className="mb-8">
           <Link
             href="/movies"
-            className="text-xs uppercase tracking-widest text-stone-550 hover:text-stone-800 dark:text-stone-600 dark:hover:text-stone-400"
+            className="text-xs uppercase tracking-widest text-stone-500 hover:text-stone-800 dark:text-stone-400 dark:hover:text-stone-200"
           >
             ← Films
           </Link>
