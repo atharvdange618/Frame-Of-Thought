@@ -15,7 +15,7 @@ export function AnalysisList({ analyses, movieId }: Props) {
         </p>
         <Link
           href={`/submit?movieId=${movieId}`}
-          className="mt-4 inline-flex items-center gap-2 rounded border border-stone-700 bg-stone-900/40 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-stone-400 transition-colors hover:border-stone-500 hover:text-stone-200"
+          className="mt-4 inline-flex items-center gap-2 rounded border border-stone-700 bg-stone-900/40 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white transition-colors hover:border-stone-500 hover:text-stone-200"
         >
           Write an Analysis
         </Link>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState, useEffect, useState } from "react";
+import { useActionState, useState } from "react";
 import { castVote, CastVoteState } from "@/app/actions/castVote";
 
 interface Props {
@@ -14,9 +14,10 @@ export function VoteButtons({ analysisId, initialUpvotes }: Props) {
   const [state, formAction, pending] = useActionState(castVote, initialState);
   const [voterName, setVoterName] = useState("");
 
-  const upvotes = (state.success && state.newUpvoteCount !== undefined)
-    ? state.newUpvoteCount
-    : initialUpvotes;
+  const upvotes =
+    state.success && state.newUpvoteCount !== undefined
+      ? state.newUpvoteCount
+      : initialUpvotes;
 
   return (
     <div className="flex shrink-0 flex-col items-end gap-2">

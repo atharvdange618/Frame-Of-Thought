@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <defs>
+    {/* Amber gradient for the cinema and philosophical elements */}
+    <linearGradient id="icon-brand-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b" />
+      <stop offset="50%" stop-color="#d97706" />
+      <stop offset="100%" stop-color="#b45309" />
+    </linearGradient>
+  </defs>
+
+  {/* Viewfinder Crop Marks (Representing 'Frame') */}
+  {/* Top Left */}
+  <path d="M 5,9 V 5 H 9" stroke="#78716c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+  {/* Top Right */}
+  <path d="M 27,9 V 5 H 23" stroke="#78716c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+  {/* Bottom Left */}
+  <path d="M 5,23 V 27 H 9" stroke="#78716c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+  {/* Bottom Right */}
+  <path d="M 27,23 V 27 H 23" stroke="#78716c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+
+  {/* Outer Circle of the Lens / Film Reel (Subtle Background) */}
+  <circle cx="16" cy="16" r="9" stroke="#44403c" stroke-width="1" stroke-dasharray="2 2" opacity="0.3" />
+
+  {/* Left Hemisphere (Winding Brain/Thought Paths) */}
+  <path d="M 16,7 C 12,7 8.5,10 8.5,14.5 C 8.5,16.5 9.5,18 11,19 C 9.5,20.5 9.5,22 11,23.5 C 12.5,25 16,25 16,25" stroke="#a8a29e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+  {/* Left Hemisphere Inner Brain Fold */}
+  <path d="M 16,11 C 13.5,11 11.5,12.5 11.5,14.5 C 11.5,15.5 12.5,16.5 13.5,16.5 C 12.5,17.5 12.5,19 13.5,20 C 14.5,21 16,21 16,21" stroke="#78716c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+
+  {/* Right Hemisphere (Film Strip representing Cinema) */}
+  <path d="M 16,7 C 20,7 23.5,10 23.5,14.5 C 23.5,16.5 22.5,18 21,19 C 22.5,20.5 22.5,22 21,23.5 C 19.5,25 16,25 16,25" stroke="url(#icon-brand-gradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+  {/* Right Hemisphere Inner Film Strip Loop */}
+  <path d="M 16,11 C 18.5,11 20.5,12.5 20.5,14.5 C 20.5,15.5 19.5,16.5 18.5,16.5 C 19.5,17.5 19.5,19 18.5,20 C 17.5,21 16,21 16,21" stroke="url(#icon-brand-gradient)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.85" />
+
+  {/* Film Sprocket Holes along the Right Film Strip Curve (Dark backing for contrast, matching background) */}
+  <circle cx="21" cy="9.5" r="0.75" fill="#1c1917" />
+  <circle cx="23.2" cy="14" r="0.75" fill="#1c1917" />
+  <circle cx="21.5" cy="18.5" r="0.75" fill="#1c1917" />
+  <circle cx="18" cy="22.5" r="0.75" fill="#1c1917" />
+
+  {/* Spark of Thought / Ideation node in the center */}
+  <circle cx="16" cy="16" r="1.5" fill="url(#icon-brand-gradient)" />
+  
+  {/* Small philosophical rays linking thoughts */}
+  <line x1="16" y1="16" x2="16" y2="2" stroke="url(#icon-brand-gradient)" stroke-width="1" stroke-dasharray="1 2" />
+  <circle cx="16" cy="2" r="1" fill="url(#icon-brand-gradient)" />
+</svg>

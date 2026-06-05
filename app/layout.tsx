@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { Logo } from "@/components/Logo";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -36,9 +37,10 @@ export default function RootLayout({
             <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
               <Link
                 href="/"
-                className="text-base font-semibold tracking-widest uppercase text-stone-800 dark:text-stone-300 transition-colors hover:text-stone-950 dark:hover:text-stone-100"
+                className="flex items-center gap-2.5 text-base font-semibold tracking-widest uppercase text-stone-800 dark:text-stone-300 transition-colors hover:text-stone-950 dark:hover:text-stone-100"
               >
-                Frame of Thought
+                <Logo size={24} className="text-amber-600 dark:text-amber-500" />
+                <span>Frame of Thought</span>
               </Link>
 
               <nav className="flex items-center gap-6 text-sm text-stone-500">
@@ -81,9 +83,12 @@ export default function RootLayout({
 
           <footer className="mt-24 border-t border-stone-800/60">
             <div className="mx-auto flex max-w-7xl flex-col items-center gap-2 px-6 py-10 sm:flex-row sm:justify-between">
-              <p className="text-sm font-semibold uppercase tracking-widest text-stone-500">
-                Frame of Thought
-              </p>
+              <div className="flex items-center gap-2.5 opacity-60">
+                <Logo size={20} className="text-stone-500" />
+                <p className="text-sm font-semibold uppercase tracking-widest text-stone-500">
+                  Frame of Thought
+                </p>
+              </div>
               <p className="text-sm italic text-stone-500">
                 &ldquo;The impediment to action advances action. What stands in
                 the way becomes the way.&rdquo; — Marcus Aurelius
